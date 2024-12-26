@@ -1,6 +1,6 @@
 <header class="header">
   <div class="container">
-    <h1 class="logo">ShopDark</h1>
+    <h1 class="logo">ShopSmart</h1>
     <nav class="navbar">
       <ul class="nav-links">
         <li><a (click)="navigateToMainpage()" class="nav-link">Home</a></li>
@@ -26,12 +26,12 @@
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
-    <p class="register-link">Noch keinen Account? <a routerLink="/register">Registriere dich hier</a>.</p>
+    <p class="register-link">Noch keinen Account? <a (click)="navigateToRegister()" class="nav-link">Registriere dich hier</a>.</p>
   </div>
 </section>
 
 <footer class="footer">
   <div class="container">
-    <p>&copy; 2024 ShopDark. Entwickelt für moderne Bedürfnisse.</p>
+    <p>&copy; 2024 ShopSmart. Entwickelt für moderne Bedürfnisse.</p>
   </div>
 </footer>
