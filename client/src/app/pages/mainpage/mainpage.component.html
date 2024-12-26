@@ -1,0 +1,49 @@
+<header class="header">
+    <div class="container">
+      <h1 class="logo">ShopSmart</h1>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a (click)="navigateToMainpage()" class="nav-link">Home</a></li>
+          <li><a (click)="navigateToLogin()" class="nav-link">Login</a></li>
+          <li><a (click)="navigateToRegister()" class="nav-link">Register</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <section class="hero">
+    <div class="container">
+      <h2 class="hero-title">Willkommen bei ShopSmart</h2>
+      <p class="hero-subtitle">Die Zukunft der Einkaufsorganisation, direkt in deiner Hand.</p>
+      <div class="hero-buttons">
+        <a (click)="navigateToRegister()" class="btn btn-primary">Jetzt registrieren</a>
+        <a (click)="navigateToLogin()" class="btn btn-outline">Einloggen</a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="features">
+    <div class="container">
+      <h3 class="section-title">Warum ShopSmart?</h3>
+      <div class="features-grid">
+        <div class="feature-item">
+          <h4>Einfach zu bedienen</h4>
+          <p>Intuitives Design für eine einfache Organisation.</p>
+        </div>
+        <div class="feature-item">
+          <h4>Cloud-basiert</h4>
+          <p>Zugriff auf deine Listen überall und jederzeit.</p>
+        </div>
+        <div class="feature-item">
+          <h4>Zeitsparend</h4>
+          <p>Weniger Zeit für Organisation, mehr für das Wesentliche.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 ShopSmart. Entwickelt für moderne Bedürfnisse.</p>
+    </div>
+  </footer>

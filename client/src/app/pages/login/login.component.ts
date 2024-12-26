@@ -1,23 +1,24 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: 'app-login',
+  standalone: true,
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class AppComponent {
-  title = 'Shop dich arm';
-  username: string = '';
-  password: string = '';
-
-  onLogin() {
-    if (this.username && this.password) {
-      console.log('Login erfolgreich:', this.username);
-      // Hier könntest du zu einer anderen Route navigieren oder Auth-Logik einfügen
-    } else {
-      console.log('Bitte Benutzername und Passwort eingeben!');
+export class LoginComponent {
+   constructor(private router: Router) {}
+  
+    navigateToLogin() {
+      this.router.navigate(['/login']);
     }
-  }
+  
+    navigateToRegister() {
+      this.router.navigate(['/register']);
+    }
+  
+    navigateToMainpage() {
+      this.router.navigate([''])
+    }
 }

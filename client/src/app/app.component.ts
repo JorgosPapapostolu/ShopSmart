@@ -5,18 +5,8 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Shop dich arm';
-  username: string = '';
-  password: string = '';
-
-  onLogin() {
-    if (this.username && this.password) {
-      console.log('Login erfolgreich:', this.username);
-    } else {
-      console.log('Bitte Benutzername und Passwort eingeben!');
-    }
+  title = 'ShopSmart';
   }
-}

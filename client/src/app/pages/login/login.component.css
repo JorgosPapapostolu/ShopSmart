@@ -1,177 +1,80 @@
-/* Allgemeine Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #121212; /* Dunkler Hintergrund */
-  color: #ffffff; /* Weißer Text */
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Header */
-.header {
-  background-color: #1e1e1e; /* Dunkler Header */
-  padding: 1rem 0;
-  border-bottom: 1px solid #333; /* Dezente Trennlinie */
-}
-
-.header .container {
+.hero-login {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  height: 100vh; 
 }
 
-.header .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #64ffda; /* Türkis als Highlight */
-}
-
-.navbar .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.navbar .nav-link {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.navbar .nav-link:hover {
-  background-color: #333;
-  border-radius: 5px;
-}
-
-/* Hero Section */
-.hero {
-  background: linear-gradient(135deg, #1e1e1e, #121212); /* Dunkler Verlauf */
-  color: #ffffff;
-  text-align: center;
-  padding: 4rem 1rem;
-}
-
-.hero-title {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  color: #aaaaaa; /* Sekundärtext */
-  margin-bottom: 2rem;
-}
-
-.hero-buttons .btn {
-  text-decoration: none;
-  padding: 1rem 2rem;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 0 0.5rem;
-  display: inline-block;
-  text-align: center;
-}
-
-.btn-primary {
-  background-color: transparent;
-  color: #64ffda;
-  border: 2px solid #64ffda;
-}
-
-.btn-primary:hover {
-  background-color: #64ffda;
-  color: #121212;
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: #64ffda;
-  border: 2px solid #64ffda;
-}
-
-.btn-outline:hover {
-  background-color: #64ffda;
-  color: #121212;
-}
-
-/* Features */
-.features {
+.hero-login .login-form {
   background-color: #1e1e1e;
-  padding: 3rem 1rem;
-}
-
-.features .section-title {
-  text-align: center;
-  font-size: 2rem;
-  color: #64ffda;
-  margin-bottom: 2rem;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.feature-item {
-  text-align: center;
-  background-color: #121212;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  width: 100%;
+  max-width: 400px;
 }
 
-.feature-item:hover {
-  transform: translateY(-10px);
-  background-color: #1e1e1e;
+.hero-login .form-group {
+  margin-bottom: 1.5rem;
 }
 
-.feature-item h4 {
-  font-size: 1.2rem;
+.hero-login .form-group label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
   color: #ffffff;
+  display: block;
   margin-bottom: 0.5rem;
 }
 
-.feature-item p {
+.hero-login .form-group input {
+  font-family: 'Nunito', sans-serif;
+  width: 100%;
+  padding: 0.8rem;
   font-size: 1rem;
-  color: #aaaaaa;
-}
-
-/* Footer */
-.footer {
+  border: 1px solid #333;
+  border-radius: 5px;
   background-color: #121212;
-  color: #aaaaaa;
+  color: #ffffff;
+}
+
+.hero-login .form-group input:focus {
+  border-color: #64ffda;
+  outline: none;
+}
+
+.hero-login .btn {
+  display: inline-block;
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
   text-align: center;
-  padding: 2rem 1rem;
+  border-radius: 5px;
+  background-color: #64ffda;
+  color: #121212;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.footer p {
-  margin: 0.5rem 0;
+.hero-login .btn:hover {
+  background-color: #4a90e2;
+}
+
+.hero-login .register-link {
+  margin-top: 1.5rem;
+  font-family: 'Nunito', sans-serif;
   font-size: 0.9rem;
+  color: #aaaaaa;
 }
 
-.footer a {
+.hero-login .register-link a {
   color: #64ffda;
   text-decoration: none;
 }
 
-.footer a:hover {
+.hero-login .register-link a:hover {
   color: #ffffff;
 }
