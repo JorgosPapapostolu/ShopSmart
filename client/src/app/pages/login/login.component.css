@@ -1,28 +1,23 @@
+/* Allgemeine Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: #121212;
-}
-
 body {
-  font-family: 'Nunito', sans-serif;
-  background-color: #121212;
-  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212; /* Dunkler Hintergrund */
+  color: #ffffff; /* Weißer Text */
   line-height: 1.6;
   margin: 0;
 }
 
+/* Header */
 .header {
-  background-color: #1e1e1e;
+  background-color: #1e1e1e; /* Dunkler Header */
   padding: 1rem 0;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #333; /* Dezente Trennlinie */
 }
 
 .header .container {
@@ -35,10 +30,9 @@ body {
 }
 
 .header .logo {
-  font-family: 'Roboto', sans-serif;
   font-size: 1.8rem;
   font-weight: bold;
-  color: #64ffda;
+  color: #64ffda; /* Türkis als Highlight */
 }
 
 .navbar .nav-links {
@@ -48,7 +42,6 @@ body {
 }
 
 .navbar .nav-link {
-  font-family: 'Roboto', sans-serif;
   color: #ffffff;
   text-decoration: none;
   font-size: 1rem;
@@ -62,24 +55,23 @@ body {
   border-radius: 5px;
 }
 
+/* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #1e1e1e, #121212);
+  background: linear-gradient(135deg, #1e1e1e, #121212); /* Dunkler Verlauf */
   color: #ffffff;
   text-align: center;
   padding: 4rem 1rem;
 }
 
 .hero-title {
-  font-family: 'Roboto', sans-serif;
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }
 
 .hero-subtitle {
-  font-family: 'Nunito', sans-serif;
   font-size: 1.2rem;
-  color: #aaaaaa;
+  color: #aaaaaa; /* Sekundärtext */
   margin-bottom: 2rem;
 }
 
@@ -92,7 +84,6 @@ body {
   margin: 0 0.5rem;
   display: inline-block;
   text-align: center;
-  font-family: 'Roboto', sans-serif;
 }
 
 .btn-primary {
@@ -117,13 +108,13 @@ body {
   color: #121212;
 }
 
+/* Features */
 .features {
   background-color: #1e1e1e;
   padding: 3rem 1rem;
 }
 
 .features .section-title {
-  font-family: 'Roboto', sans-serif;
   text-align: center;
   font-size: 2rem;
   color: #64ffda;
@@ -153,18 +144,17 @@ body {
 }
 
 .feature-item h4 {
-  font-family: 'Roboto', sans-serif;
   font-size: 1.2rem;
   color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
 .feature-item p {
-  font-family: 'Nunito', sans-serif;
   font-size: 1rem;
   color: #aaaaaa;
 }
 
+/* Footer */
 .footer {
   background-color: #121212;
   color: #aaaaaa;
@@ -173,13 +163,11 @@ body {
 }
 
 .footer p {
-  font-family: 'Nunito', sans-serif;
   margin: 0.5rem 0;
   font-size: 0.9rem;
 }
 
 .footer a {
-  font-family: 'Roboto', sans-serif;
   color: #64ffda;
   text-decoration: none;
 }
