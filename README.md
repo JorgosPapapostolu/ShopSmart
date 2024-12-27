@@ -1,1 +1,1 @@
-# SmartShop - Erste mal mit Angular
+# SmartShop - Erstes mal mit Angular
