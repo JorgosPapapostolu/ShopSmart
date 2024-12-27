@@ -1,0 +1,71 @@
+<header class="header">
+    <div class="container">
+      <h1 class="logo">ShopSmart</h1>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a (click)="navigateToMainpage()" class="nav-link">Home</a></li>
+          <li><a (click)="navigateToLogin()" class="nav-link">Login</a></li>
+          <li><a (click)="navigateToRegister()" class="nav-link">Register</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <section class="hero hero-register">
+    <div class="container">
+      <h2 class="hero-title">Jetzt registrieren</h2>
+      <p class="hero-subtitle">Schlüssel zum Glück, keine Ahnung was hier stehen soll.</p>
+  
+      <form class="register-form" (ngSubmit)="register()">
+        <div class="form-group">
+          <label for="email">E-Mail-Adresse</label>
+          <input 
+            type="email" 
+            id="email" 
+            placeholder="Deine E-Mail" 
+            [(ngModel)]="email" 
+            name="email" 
+            required>
+        </div>
+  
+        <div class="form-group">
+          <label for="password">Passwort</label>
+          <input 
+            type="password" 
+            id="password" 
+            placeholder="Dein Passwort" 
+            [(ngModel)]="password" 
+            name="password" 
+            required>
+        </div>
+  
+        <div class="form-group">
+          <label for="confirmPassword">Passwort bestätigen</label>
+          <input 
+            type="password" 
+            id="confirmPassword" 
+            placeholder="Passwort bestätigen" 
+            [(ngModel)]="confirmPassword" 
+            name="confirmPassword" 
+            required>
+        </div>
+  
+        <div *ngIf="errorMessage" class="error-message">
+          <p>{{ errorMessage }}</p>
+        </div>
+  
+        <button type="submit" class="btn btn-primary">Registrieren</button>
+      </form>
+  
+      <p class="register-link">
+        Bereits registriert? 
+        <a (click)="navigateToLogin()" class="nav-link">Melde dich hier an</a>.
+      </p>
+    </div>
+  </section>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 ShopSmart. Entwickelt für moderne Bedürfnisse.</p>
+    </div>
+  </footer>
