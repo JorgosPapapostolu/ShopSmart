@@ -3,15 +3,15 @@ import { UserService } from './user.service';
 
 @Controller('users')
 export class UserController {
-    constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService) { }
 
-    @Post('register')
-    async registerUser(@Body() userData: { email: string; password: string }) {
-        return this.userService.register(userData);
-    }
+  @Post('register')
+  async registerUser(@Body() userData: { email: string; password: string }) {
+    return this.userService.register(userData);
+  }
 
-    @Post('login')
-    async loginUser(@Body() loginUser: { email: string; password: string }) {
-        return this.userService.login(loginUser);
-    }
+  @Post('login')
+  async loginUser(@Body() loginData: { email: string; password: string }) {
+    return this.userService.login(loginData);
+  }
 }

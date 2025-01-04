@@ -1,41 +1,60 @@
-import { Injectable, UnauthorizedException } from "@nestjs/common";
-import { Repository } from "typeorm";
+import { Injectable, UnauthorizedException, Inject } from "@nestjs/common";
+import { DataSource, Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "./user.entity";
 import * as bcrypt from 'bcrypt';
+import { Pool } from 'pg';
 
 @Injectable()
 export class UserService {
-    constructor(
-        @InjectRepository(User)
-        private readonly userRepository: Repository<User>,
-    ) { }
+  constructor(
+    @Inject('DATABASE_POOL') private readonly pool: Pool,
+  ) {}
 
-    async register(userData: { email: string; password: string }) {
-        const hashedPassword = await bcrypt.hash(userData.password, 10);
+  async register(userData: { email: string; password: string }) {
+    const hashedPassword = await bcrypt.hash(userData.password, 10);
 
-        const newUser = await this.userRepository.create({ ...userData, password: hashedPassword });
-        return this.userRepository.save(newUser);
+    const query = `
+      INSERT INTO "user" (email, password)
+      VALUES ($1, $2)
+      RETURNING id, email
+    `;
+
+    const values = [userData.email, hashedPassword];
+
+    try {
+      const result = await this.pool.query(query, values);
+      console.log('User registered:', result.rows[0]);
+      return result.rows[0];
+    } catch (err) {
+      console.error('Error registering user:', err);
+      throw err;
+    }
+  }
+
+  async login(loginData: { email: string; password: string }) {
+    const query = `
+      SELECT * FROM "user" WHERE email = $1
+    `;
+
+    const values = [loginData.email];
+
+    const result = await this.pool.query(query, values);
+    const user = result.rows[0];
+
+    if (!user) {
+      throw new Error('User not found');
     }
 
-    async login(loginUser: { email: string; password: string }) {
-        const user = await this.userRepository.findOne({ where: { email: loginUser.email } });
+    const isPasswordValid = await bcrypt.compare(loginData.password, user.password);
 
-        if (!user) {
-            throw new UnauthorizedException('User existiert nicht');
-        }
-
-        const isPasswordValid = await bcrypt.compare(loginUser.password, user.password)
-        if (!isPasswordValid) {
-            throw new UnauthorizedException('Anmeldedaten ungültig')
-        }
-
-        return {
-            message: 'Login erfolgreich',
-            user: {
-                id: user.id,
-                email: user.email,
-            }
-        }
+    if (!isPasswordValid) {
+      throw new Error('Invalid credentials');
     }
+
+    return {
+      id: user.id,
+      email: user.email,
+    };
+  }
 }
