@@ -1,0 +1,25 @@
+<header class="header">
+    <div class="container">
+      <h1 class="logo">ShopSmart</h1>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a (click)="navigateToDashboard()" class="nav-link">Dashboard</a></li>
+          <li><a (click)="navigateToProfile()" class="nav-link">Profile</a></li>
+          <li><a (click)="logout()" class="nav-link logout-link">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <section class="welcome-section">
+    <div class="container">
+      <h2 class="welcome-title">Hallo, [Benutzername]!</h2>
+      <p class="welcome-subtitle">Willkommen zurück. Was möchtest du heute tun?</p>
+      <div class="action-buttons">
+        <button (click)="navigateToTasks()" class="btn btn-primary">Aufgaben verwalten</button>
+        <button (click)="navigateToAnalytics()" class="btn btn-secondary">Statistiken ansehen</button>
+        <button (click)="navigateToSettings()" class="btn btn-outline">Einstellungen</button>
+      </div>
+    </div>
+  </section>
+  

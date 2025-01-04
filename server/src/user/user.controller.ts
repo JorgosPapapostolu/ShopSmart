@@ -11,7 +11,7 @@ export class UserController {
   }
 
   @Post('login')
-  async loginUser(@Body() loginData: { email: string; password: string }) {
-    return this.userService.login(loginData);
+  async loginUser(@Body() userData: { email: string; password: string }) {
+    return this.userService.login(userData);
   }
 }
