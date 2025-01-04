@@ -1,29 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { Pool } from 'pg';
-
-const dbProvider = {
-  provide: 'DATABASE_POOL',
-  useFactory: async () => {
-    const pool = new Pool({
-      host: process.env.POSTGRES_HOST,
-      port: parseInt(process.env.POSTGRES_PORT, 10),
-      user: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DB,
-    });
-
-    return pool;
-  },
-};
+import { UserModule } from './user/user.module';
+import { DatabaseModule } from './database.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    DatabaseModule,
+    UserModule,
   ],
-  providers: [dbProvider],
-  exports: [dbProvider],
 })
 export class AppModule {}

@@ -1,7 +1,6 @@
 import { Injectable, UnauthorizedException, Inject } from "@nestjs/common";
 import { DataSource, Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
-import { User } from "./user.entity";
 import * as bcrypt from 'bcrypt';
 import { Pool } from 'pg';
 
@@ -12,10 +11,15 @@ export class UserService {
   ) {}
 
   async register(userData: { email: string; password: string }) {
+
+    if (!userData.email || !userData.password) {
+      throw new Error('Email and password are required');
+    }    
+
     const hashedPassword = await bcrypt.hash(userData.password, 10);
 
     const query = `
-      INSERT INTO "user" (email, password)
+      INSERT INTO users (email, password)
       VALUES ($1, $2)
       RETURNING id, email
     `;
@@ -34,7 +38,7 @@ export class UserService {
 
   async login(loginData: { email: string; password: string }) {
     const query = `
-      SELECT * FROM "user" WHERE email = $1
+      SELECT * FROM users WHERE email = $1
     `;
 
     const values = [loginData.email];
