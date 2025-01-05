@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
-    username: string = 'Benutzer';
+    username: string = 'Test-User';
 
     constructor(private router: Router) { }
 
