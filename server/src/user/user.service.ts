@@ -10,7 +10,7 @@ export class UserService {
     @Inject('DATABASE_POOL') private readonly pool: Pool,
   ) {}
 
-  async register(userData: { email: string; password: string }) {
+  async register(userData: { username: string; email: string; password: string }) {
 
     if (!userData.email || !userData.password) {
       throw new Error('Email and password are required');
@@ -19,12 +19,12 @@ export class UserService {
     const hashedPassword = await bcrypt.hash(userData.password, 10);
 
     const query = `
-      INSERT INTO users (email, password)
-      VALUES ($1, $2)
-      RETURNING id, email
+      INSERT INTO users (username, email, password)
+      VALUES ($1, $2, $3)
+      RETURNING id, username, email
     `;
 
-    const values = [userData.email, hashedPassword];
+    const values = [userData.username, userData.email, hashedPassword];
 
     try {
       const result = await this.pool.query(query, values);
@@ -36,12 +36,12 @@ export class UserService {
     }
   }
 
-  async login(loginData: { email: string; password: string }) {
+  async login(loginData: { username: string; password: string }) {
     const query = `
-      SELECT * FROM users WHERE email = $1
+      SELECT * FROM users WHERE username = $1
     `;
 
-    const values = [loginData.email];
+    const values = [loginData.username];
 
     const result = await this.pool.query(query, values);
     const user = result.rows[0];
@@ -58,7 +58,7 @@ export class UserService {
 
     return {
       id: user.id,
-      email: user.email,
+      username: user.username,
     };
   }
 }

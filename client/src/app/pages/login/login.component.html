@@ -17,13 +17,13 @@
     <p class="hero-subtitle">Bitte melde dich an, um deine Einkaufslisten zu verwalten.</p>
     <form class="login-form" (ngSubmit)="login()">
       <div class="form-group">
-        <label for="email">E-Mail-Adresse</label>
+        <label for="username">Username</label>
         <input 
-          type="email" 
-          id="email" 
-          placeholder="Deine E-Mail" 
-          [(ngModel)]="email" 
-          name="email" 
+          type="username" 
+          id="username" 
+          placeholder="Dein Username" 
+          [(ngModel)]="username" 
+          name="username" 
           required>
       </div>
       <div class="form-group">

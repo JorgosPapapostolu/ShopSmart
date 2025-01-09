@@ -11,6 +11,7 @@ import { UserService } from '../../services/user.service';
   imports: [CommonModule, FormsModule]
 })
 export class RegisterComponent {
+  username: string = '';
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
@@ -23,13 +24,13 @@ export class RegisterComponent {
       console.log("Passwort stimmt nicht überein.")
       this.errorMessage = 'Die Passwörter stimmen nicht überein.';
       return;
-    } else if (!this.email || !this.password || !this.confirmPassword) {
+    } else if (!this.username || !this.email || !this.password || !this.confirmPassword) {
       console.log("Alle Felder ausfüllen")
       this.errorMessage = 'Bitte fülle alle Felder aus.';
     }
 
     this.userService
-      .registerUser({ email: this.email, password: this.password })
+      .registerUser({ username: this.username, email: this.email, password: this.password })
       .subscribe({
         next: (response) => {
           console.log('Registrierung erfolgreich:', response);

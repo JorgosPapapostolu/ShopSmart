@@ -10,14 +10,24 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
-    registerUser(userData: { email: string; password: string }): Observable<any> {
-        console.log('Sending registration request:', userData);
+    registerUser(userData: { username: string; email: string; password: string }): Observable<any> {
         return this.http.post(`${this.apiUrl}/register`, userData);
     }
 
-    loginUser(userData: { email: string; password: string }): Observable<any> {
-        console.log('Sending login request:', userData);
-
+    loginUser(userData: { username: string; password: string }): Observable<any> {
         return this.http.post(`${this.apiUrl}/login`, userData);
+    }
+
+    saveUserData(user: { id: number; email: string; username: string }) {
+        localStorage.setItem('user', JSON.stringify(user));
+    }
+
+    getUserData(): { id: number; email: string; username: string } | null {
+        const user = localStorage.getItem('user');
+        return user ? JSON.parse(user) : null;
+    }
+
+    clearUserData() {
+        localStorage.removeItem('user');
     }
 }

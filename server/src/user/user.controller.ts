@@ -6,12 +6,12 @@ export class UserController {
   constructor(private readonly userService: UserService) { }
 
   @Post('register')
-  async registerUser(@Body() userData: { email: string; password: string }) {
+  async registerUser(@Body() userData: { username: string; email: string; password: string }) {
     return this.userService.register(userData);
   }
 
   @Post('login')
-  async loginUser(@Body() userData: { email: string; password: string }) {
+  async loginUser(@Body() userData: { username: string; email: string; password: string }) {
     return this.userService.login(userData);
   }
 }

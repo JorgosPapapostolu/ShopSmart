@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -9,7 +10,14 @@ import { Router } from '@angular/router';
 export class DashboardComponent {
     username: string = 'Test-User';
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private userService: UserService) {
+        const userData = this.userService.getUserData();
+        if (userData) {
+            this.username = userData.username;
+        } else {
+            this.router.navigate(['/login']); // falls nicht eingeloggt hihi
+        }
+    }
 
     navigateToDashboard() {
         this.router.navigate(['/dashboard']);
@@ -32,6 +40,7 @@ export class DashboardComponent {
     }
 
     logout() {
+        this.userService.clearUserData();
         this.router.navigate([''])
     }
 }

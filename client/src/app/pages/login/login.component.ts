@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class LoginComponent {
+  username: string = '';
   email: string = '';
   password: string = '';
   errorMessage: string = '';
@@ -19,15 +20,16 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) { }
 
   login() {
-    if (!this.email || !this.password) {
+    if (!this.username || !this.password) {
       this.errorMessage = 'Bitte fülle alle Felder aus.';
       return;
     }
 
-    this.userService.loginUser({ email: this.email, password: this.password })
+    this.userService.loginUser({ username: this.username, password: this.password })
       .subscribe({
         next: (response) => {
           console.log('Login successful:', response);
+          this.userService.saveUserData(response);
           this.router.navigate(['/dashboard']);
         },
         error: (error) => {
