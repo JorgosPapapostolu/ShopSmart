@@ -19,15 +19,24 @@ export class UserService {
     }
 
     saveUserData(user: { id: number; email: string; username: string }, token: string) {
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('token', token);
-    }
+        if (user) {
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('access_token', token);
+        } else {
+            console.error('Fehler: Benutzer ist undefiniert');
+        }
+    }    
 
     getUserData(): { id: number; email: string; username: string } | null {
-        const user = localStorage.getItem('user');
-        return user ? JSON.parse(user) : null;
+        try {
+            const user = localStorage.getItem('user');
+            return user ? JSON.parse(user) : null;
+        } catch (error) {
+            console.error('Fehler beim Parsen der Benutzerdaten:', error);
+            return null;
+        }
     }
-
+    
     getToken(): string | null {
         return localStorage.getItem('token');
     }
