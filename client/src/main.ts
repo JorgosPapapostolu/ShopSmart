@@ -4,11 +4,17 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { FormsModule } from '@angular/forms';
 import { importProvidersFrom } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, withInterceptors } from '@angular/common/http';
+import { AuthInterceptor } from './app/services/auth.interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(HttpClientModule, FormsModule)
+    importProvidersFrom(HttpClientModule, FormsModule),
+    {
+      provide: withInterceptors,
+      useValue: [AuthInterceptor],
+      multi: true
+    }
   ]
 }).catch(err => console.error(err));

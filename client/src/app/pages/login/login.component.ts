@@ -29,7 +29,7 @@ export class LoginComponent {
       .subscribe({
         next: (response) => {
           console.log('Login successful:', response);
-          this.userService.saveUserData(response);
+          this.userService.saveUserData(response.user, response.access_token);
           this.router.navigate(['/dashboard']);
         },
         error: (error) => {

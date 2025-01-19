@@ -1,9 +1,10 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { UserService } from './user.service';
+import { AuthService } from 'src/auth/auth.service';
 
 @Controller('users')
 export class UserController {
-  constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: UserService, private readonly authService: AuthService) { }
 
   @Post('register')
   async registerUser(@Body() userData: { username: string; email: string; password: string }) {
@@ -12,6 +13,7 @@ export class UserController {
 
   @Post('login')
   async loginUser(@Body() userData: { username: string; email: string; password: string }) {
-    return this.userService.login(userData);
+    const user = await this.userService.login(userData);
+    return this.authService.login(user);
   }
 }
