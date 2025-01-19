@@ -47,6 +47,6 @@ export class UserService {
 
     clearUserData() {
         localStorage.removeItem('user');
-        localStorage.removeItem('token');
+        localStorage.removeItem('access_token');
     }
 }
