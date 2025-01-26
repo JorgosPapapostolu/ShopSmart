@@ -21,7 +21,7 @@ export class UserService {
     saveUserData(user: { id: number; email: string; username: string }, token: string) {
         if (user) {
             localStorage.setItem('user', JSON.stringify(user));
-            localStorage.setItem('access_token', token);
+            localStorage.setItem('token', token);
         } else {
             console.error('Fehler: Benutzer ist undefiniert');
         }
@@ -42,7 +42,9 @@ export class UserService {
     }
 
     isLoggedIn(): boolean {
-        return !!this.getToken();
+        const token = localStorage.getItem('token');
+        console.log('AuthGuard checking token:', token);
+        return !!token; 
     }
 
     clearUserData() {

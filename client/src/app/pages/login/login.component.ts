@@ -31,7 +31,11 @@ export class LoginComponent {
           console.log('Login successful:', response);
           if (response.user) {
             this.userService.saveUserData(response.user, response.access_token);
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard']).then(() => {
+              console.log("Navigation to dashboard successful");
+            }).catch(err => {
+              console.error("Navigation error:", err);
+            });
           } else {
             this.errorMessage = 'Fehler beim Login. Benutzerinformationen fehlen.';
           }
