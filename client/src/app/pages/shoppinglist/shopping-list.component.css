@@ -133,3 +133,12 @@ input {
     background-color: #64ffda;
     color: #121212;
 }
+
+.navbar .logout-link {
+    color: #ff4d4f;
+    font-weight: bold;
+  }
+  
+  .navbar .logout-link:hover {
+    color: #ff7875;
+  }
