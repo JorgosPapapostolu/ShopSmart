@@ -1,0 +1,53 @@
+<header class="header">
+    <div class="container">
+        <h1 class="logo">ShopSmart</h1>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a (click)="navigateToDashboard()" class="nav-link">Dashboard</a></li>
+                <li><a (click)="logout()" class="nav-link logout-link">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="shopping-section">
+    <div class="container">
+        <h2 class="shopping-title">Deine Einkaufslisten</h2>
+
+        <div class="shopping-content">
+            <div class="shopping-lists">
+                <div *ngFor="let list of shoppingLists" class="shopping-list">
+                    <h3>{{ list.name }}</h3>
+                    <ul class="item-list">
+                        <li *ngFor="let item of list.items" class="item">
+                            <input type="checkbox" [(ngModel)]="item.completed">
+                            <span [class.completed]="item.completed">{{ item.name }}</span>
+                        </li>
+                    </ul>
+                    <div class="list-actions">
+                        <button (click)="markAsCompleted(list)" class="btn btn-secondary">Abschließen</button>
+                        <button (click)="deleteList(list)" class="btn btn-danger">Löschen</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shopping-controls">
+                <form (submit)="addShoppingList()" class="shopping-form">
+                    <input type="text" [(ngModel)]="newListName" name="listName" placeholder="Neue Einkaufsliste" required>
+                    <button type="submit" class="btn btn-primary">+ Liste</button>
+                </form>
+
+                <div class="add-item-form">
+                    <input type="text" [(ngModel)]="newItemName" placeholder="Artikel hinzufügen" name="newItem">
+                    <button (click)="addItemToList()" class="btn btn-outline">+ Hinzufügen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 ShopSmart. Entwickelt für moderne Bedürfnisse.</p>
+    </div>
+</footer>

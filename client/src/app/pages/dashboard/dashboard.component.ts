@@ -23,20 +23,8 @@ export class DashboardComponent {
         this.router.navigate(['/dashboard']);
     }
 
-    navigateToProfile() {
-        this.router.navigate(['/profile']);
-    }
-
-    navigateToTasks() {
-        this.router.navigate(['/tasks']);
-    }
-
-    navigateToAnalytics() {
-        this.router.navigate(['/analytics']);
-    }
-
-    navigateToSettings() {
-        this.router.navigate(['/settings']);
+    navigateToShoppingList() {
+        this.router.navigate(['/shopping-list']);
     }
 
     logout() {

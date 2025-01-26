@@ -1,0 +1,135 @@
+/* Allgemeines Styling für die Seite */
+.shopping-section {
+    padding: 4rem 1rem;
+    background: linear-gradient(135deg, #1e1e1e, #121212);
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Titel */
+.shopping-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #64ffda;
+}
+
+/* Layout Container */
+.shopping-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Einkaufslisten-Anzeige */
+.shopping-lists {
+    flex: 3;
+    text-align: left;
+}
+
+.shopping-list {
+    background: #1e1e1e;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem;
+}
+
+.shopping-list h3 {
+    color: #64ffda;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #888888;
+}
+
+/* Steuerungselemente für Listen und Items */
+.shopping-controls {
+    flex: 1;
+    text-align: left;
+}
+
+.shopping-form, .add-item-form {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    text-align: left;
+    width: 100%;
+    max-width: 300px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #64ffda;
+    color: #121212;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ffffff;
+    color: #64ffda;
+}
+
+.btn-secondary {
+    background-color: #444c56;
+    color: #ffffff;
+}
+
+.btn-danger {
+    background-color: #ff4d4f;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #ff7875;
+}
+
+.btn-outline {
+    border: 2px solid #64ffda;
+    background: none;
+    color: #64ffda;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: #64ffda;
+    color: #121212;
+}
