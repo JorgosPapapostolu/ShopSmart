@@ -7,6 +7,7 @@ import { Observable } from "rxjs";
 })
 export class UserService {
     private apiUrl = 'http://localhost:3000/users';
+    private currentUser: { id: number; email: string; username: string } | null = null;
 
     constructor(private http: HttpClient) { }
 
@@ -19,36 +20,28 @@ export class UserService {
     }
 
     saveUserData(user: { id: number; email: string; username: string }, token: string) {
-        if (user) {
-            localStorage.setItem('user', JSON.stringify(user));
-            localStorage.setItem('token', token);
-        } else {
-            console.error('Fehler: Benutzer ist undefiniert');
-        }
-    }    
+        this.currentUser = user;
+        localStorage.setItem('token', token);
+    }
 
     getUserData(): { id: number; email: string; username: string } | null {
-        try {
-            const user = localStorage.getItem('user');
-            return user ? JSON.parse(user) : null;
-        } catch (error) {
-            console.error('Fehler beim Parsen der Benutzerdaten:', error);
-            return null;
+        if (this.currentUser) {
+            return this.currentUser;
         }
+        const user = localStorage.getItem('user');
+        return user ? JSON.parse(user) : null;
     }
-    
+
     getToken(): string | null {
         return localStorage.getItem('token');
     }
 
     isLoggedIn(): boolean {
-        const token = localStorage.getItem('token');
-        console.log('AuthGuard checking token:', token);
-        return !!token; 
+        return !!this.getToken();
     }
 
     clearUserData() {
-        localStorage.removeItem('user');
-        localStorage.removeItem('access_token');
+        this.currentUser = null;
+        localStorage.removeItem('token')
     }
 }
